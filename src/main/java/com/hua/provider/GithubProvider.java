@@ -44,8 +44,5 @@ public class GithubProvider {
 
         }
         return null;
-
     }
-
-
 }
