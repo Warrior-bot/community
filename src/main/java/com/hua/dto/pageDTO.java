@@ -7,6 +7,7 @@ import java.util.List;
 
 @Data
 public class pageDTO {
+    //将QuesstionDTO放入到pageDTO里面，所以index里面的quesstions.id等等，才能有这样的方法，因为Service层将它返回回去了
     private List<QuesstionDTO> quesstions;
     private Boolean showPrevious;
     private Boolean showFirstPage;

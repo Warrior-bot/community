@@ -86,7 +86,8 @@ public class QuestionServcie {
         paginationDTO.setPagination(totalPage,page);
 
         Integer offset =size * (page-1);
-        List<Quesstion> questions = quesstionMapper.listByUserId(userId,offset,size);
+        //这里返回的questions放到for循环里面去循环遍历，
+        List<Quesstion> questions = quesstionMapper.listByUserId(userId, offset, size);
 
         List<QuesstionDTO> quesstionDTOList = new ArrayList<>();
 
@@ -95,11 +96,14 @@ public class QuestionServcie {
             QuesstionDTO quesstionDTO = new QuesstionDTO();
             BeanUtils.copyProperties(question, quesstionDTO);
             quesstionDTO.setUser(user);
+            //将quesstionDTO的对象加入到quesstionDTOList的集合
             quesstionDTOList.add(quesstionDTO);
         }
+        //将quesstionDTOList放入paginationDTO在返回回去
         paginationDTO.setQuesstions(quesstionDTOList);
         return paginationDTO;
     }
+
     //Question的方法
     public QuesstionDTO getById(Integer id) {
         Quesstion quesstion=quesstionMapper.getById(id);
@@ -108,8 +112,8 @@ public class QuestionServcie {
         User user =userMapper.findById(quesstion.getCreator());
         quesstionDTO.setUser(user);
         return quesstionDTO;
-
     }
+
     //判断是否有ID传入，如果有显示ID对应的内容，没有就不显示
     public void createOrUpdate(Quesstion quesstion) {
         if (quesstion.getId() == null){

@@ -21,6 +21,7 @@ public class PublishController {
     @Autowired
     private QuestionServcie questionServcie;
 
+    //处理编辑功能
     @GetMapping("/publish/{id}")
     public String edit(@PathVariable(name="id") Integer id,
                        Model model) {
@@ -37,6 +38,7 @@ public class PublishController {
         return "publish";
     }
 
+    //处理编辑发布功能的
     @PostMapping("/publish")
     public String dopublish(
             @RequestParam(value="title",required = false) String title,
@@ -76,6 +78,8 @@ public class PublishController {
             quesstion.setTag(tag);
             quesstion.setCreator(user.getId());
             quesstion.setId(id);
+            quesstion.setGmtCreate(System.currentTimeMillis());
+            quesstion.setGmtModified(quesstion.getGmtModified());
             questionServcie.createOrUpdate(quesstion);
             return "redirect:/";
         }

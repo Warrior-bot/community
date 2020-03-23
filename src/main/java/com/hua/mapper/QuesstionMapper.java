@@ -1,6 +1,5 @@
 package com.hua.mapper;
 
-import com.hua.dto.QuesstionDTO;
 import com.hua.model.Quesstion;
 import org.apache.ibatis.annotations.*;
 
